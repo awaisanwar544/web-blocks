@@ -32,6 +32,46 @@ const addNewBlock = (ele) => {
   newElement.click()
 }
 
+const editNewBlock = (e) => {
+  const contentDiv = document.querySelector('#added-content')
+  const input = document.querySelector('#block')
+  previousElement = e.target
+  input.remove()
+  elementEditable = document.createElement('input')
+  elementEditable.placeholder = previousElement.innerText
+  elementEditable.addEventListener('focusout', (e) => {
+    e.target.parentElement.replaceChild(previousElement, e.target)
+    input.value = ''
+    contentDiv.append(input)
+    elementEditable.removeEventListener('focusout')
+  })
+
+  if (e.isTrusted) {
+    elementEditable.value = previousElement.innerText
+  }
+
+  elementEditable.classList = 'block bg-green'
+  elementEditable.addEventListener('keyup', (event) => {
+
+    if (event.key === 'Enter' && event.target.value !== '') {
+      previousElement.innerText = event.target.value
+      event.target.parentElement.replaceChild(previousElement, event.target)
+      input.value = ''
+      contentDiv.append(input)
+    }
+
+    if (event.key === 'Escape') {
+      event.target.parentElement.replaceChild(previousElement, event.target)
+      input.value = ''
+      contentDiv.append(input)
+    }
+  })
+
+  e.target.parentElement.replaceChild(elementEditable, previousElement)
+  elementEditable.focus()
+
+}
+
 const removeSuggestionBlock = () => {
   const suggestionsBlock = document.querySelector('#suggestions-block')
   if (suggestionsBlock) {
