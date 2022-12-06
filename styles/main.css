@@ -1,3 +1,8 @@
+.text-div {
+  width: 100%;
+  cursor: text;
+}
+
 .blue-color {
   color: #3565a9 !important;
 }
@@ -168,4 +173,72 @@ main {
 
 #options > ul > li {
   margin-right: 0.5em;
+}
+
+#added-content {
+  width: 80%;
+  margin-top: 1em;
+}
+
+#added-content * {
+  color: '#000000';
+  font-size: 1em;
+  margin: 0;
+  margin-top: 0.5em;
+  height: 2em;
+}
+
+#added-content h1 {
+  font-size: 2em;
+  margin: 0;
+  margin-top: 0.5em;
+}
+
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+.block:focus {
+  display: block;
+  width: 100%;
+  outline: none;
+}
+
+#suggestions-section {
+  position: relative;
+  width: 80%;
+}
+
+#suggestions-block {
+  width: fit-content;
+  border: 1px;
+  border-style: solid;
+  border-color: #9c9c9c;
+  border-radius: 0.5em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#suggestions-block * {
+  margin: 0px;
+  padding: 0.25em;
+}
+
+.counter {
+  background-color: #3565a9;
+  color: #fff;
+  border-radius: 0.125em;
+}
+
+.sub-text {
+  font-size: 0.75em;
+}
+
+.selectable {
+  cursor: pointer;
+}
+
+.selectable:hover {
+  background-color: #e0e0e0;
 }
