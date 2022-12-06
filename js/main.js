@@ -43,7 +43,7 @@ const editNewBlock = (e) => {
     e.target.parentElement.replaceChild(previousElement, e.target)
     input.value = ''
     contentDiv.append(input)
-    elementEditable.removeEventListener('focusout')
+    elementEditable.removeEventListener('focusout', this)
   })
 
   if (e.isTrusted) {
@@ -146,7 +146,13 @@ const inputEvents = (event) => {
 window.onload = () => {
   const input = document.querySelector('#block')
   if (input) {
-    document.querySelector('#block').addEventListener('input', displaySuggestionBlock)
+    document.querySelector('#block').addEventListener('input', (e) => {
+      e.target.style.backgroundColor = '#ffffff'
+      displaySuggestionBlock(e)
+      if (e.target.value.length > 0 && e.target.value[0] !== '/') {
+        e.target.style.backgroundColor = '#e682828d'
+      }
+    })
     document.querySelector('#block').addEventListener('keyup', inputEvents)
   }
 };
