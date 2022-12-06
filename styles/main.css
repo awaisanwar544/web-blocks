@@ -113,3 +113,59 @@ header {
 #operations > ul > li > span {
   margin-left: 0.5em;
 }
+
+main {
+  width: auto;
+  padding: 2em;
+  margin: 1em;
+  align-items: center;
+}
+
+#info-bar {
+  border: 1px;
+  border-style: solid;
+  border-color: #9c9c9c;
+  border-radius: 0.5em;
+  width: 60%;
+  padding: 0.25em;
+  font-size: 0.85em;
+  color: #9c9c9c;
+}
+
+#user-details {
+  display: flex;
+  margin: 0px;
+  font-size: 1.125em;
+ }
+
+#user-details > ul {
+  margin: 0px;
+ }
+
+#user-details > ul > li {
+  margin-left: 0.5em;
+  display: flex;
+  align-items: center;
+ }
+
+#user-details > ul > li * {
+  margin-left: 0.5em;
+}
+
+#user-details > ul > li > img {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 2em;
+}
+
+#user-details > ul > li:before {
+  content: "|";
+}
+
+#user-details > ul :nth-child(1):before {
+  content: "";
+}
+
+#options > ul > li {
+  margin-right: 0.5em;
+}
