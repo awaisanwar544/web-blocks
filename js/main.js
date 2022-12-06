@@ -79,6 +79,13 @@ const removeSuggestionBlock = () => {
   }
 }
 
+const filterReference = (val) => {
+  if (val === '') {
+    return []
+  }
+  return Object.keys(reference).filter((key) => key.includes(val))
+}
+
 const displaySuggestionBlock = (event) => {
   const suggestionsSection = document.querySelector('#suggestions-section')
   let suggestionsBlock = document.querySelector('#suggestions-block')
@@ -87,8 +94,7 @@ const displaySuggestionBlock = (event) => {
       suggestionsBlock.remove()
     }
 
-    const options = Object.keys(reference).
-                    filter((key) => key.includes(event.target.value))
+    const options = filterReference(event.target.value)
     if (options.length > 0 && event.target.value !== '') {
       const suggestions = `
                             <div id="suggestions-block">
@@ -156,3 +162,7 @@ window.onload = () => {
     document.querySelector('#block').addEventListener('keyup', inputEvents)
   }
 };
+
+module.exports = {
+  filterReference
+}
