@@ -32,6 +32,18 @@ const addNewBlock = (ele) => {
   newElement.click()
 }
 
+const inputEvents = (event) => {
+  if (event.key === 'Enter' && reference.hasOwnProperty(event.target.value)) {
+    removeSuggestionBlock()
+    addNewBlock(reference[event.target.value])
+  }
+
+  if (event.key === 'Escape') {
+    removeSuggestionBlock()
+    event.target.value = ''
+  }
+}
+
 window.onload = () => {
   const input = document.querySelector('#block')
   if (input) {
