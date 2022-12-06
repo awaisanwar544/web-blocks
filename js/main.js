@@ -32,6 +32,65 @@ const addNewBlock = (ele) => {
   newElement.click()
 }
 
+const removeSuggestionBlock = () => {
+  const suggestionsBlock = document.querySelector('#suggestions-block')
+  if (suggestionsBlock) {
+    suggestionsBlock.remove()
+  }
+}
+
+const displaySuggestionBlock = (event) => {
+  const suggestionsSection = document.querySelector('#suggestions-section')
+  let suggestionsBlock = document.querySelector('#suggestions-block')
+
+    if (suggestionsBlock) {
+      suggestionsBlock.remove()
+    }
+
+    const options = Object.keys(reference).
+                    filter((key) => key.includes(event.target.value))
+    if (options.length > 0 && event.target.value !== '') {
+      const suggestions = `
+                            <div id="suggestions-block">
+                              <div>
+                                <h3 class="text-bold">Add blocks</h3>
+                                <p class="grey-color sub-text" >Keep typing to filter, or escape to exit</p>
+                              </div>
+                              <div class="flex-row mt-05 mb-1">
+                                <p class="p-0125">Filtering keyword</p>
+                                <p class="counter p-0125" >${options.length}</p>
+                              </div>
+                            </div>
+                          `
+      const suggestionsList = options.map((item) => `
+                        <div class="flex-row selectable">
+                          <div>
+                            <img src="./images/text.svg" />
+                          </div>
+                          <div>
+                            <h3 id="${item}">${reference[item].defaultValue}</h3>
+                            <p class="grey-color sub-text">Shortcut: type ${item}</p>
+                          </div>
+                        </div>
+                      `
+      )
+      suggestionsSection.insertAdjacentHTML('beforeend', suggestions)
+      suggestionsBlock = document.querySelector('#suggestions-block')
+
+      suggestionsList.forEach((item) => {
+        suggestionsBlock.insertAdjacentHTML('beforeend', item)
+      })
+
+      document.querySelectorAll('.selectable').forEach((item) => {
+        item.addEventListener('click', (e) => {
+          addNewBlock(reference[e.target.id])
+          removeSuggestionBlock()
+        })
+      })
+    }
+
+}
+
 const inputEvents = (event) => {
   if (event.key === 'Enter' && reference.hasOwnProperty(event.target.value)) {
     removeSuggestionBlock()
