@@ -8,3 +8,9 @@ const reference = {
     defaultValue: `Add normal text`
   },
 }
+
+const newDiv = () => {
+  const newBlock = document.createElement('div')
+  newBlock.classList = 'text-div'
+  return newBlock
+}
