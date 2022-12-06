@@ -22,3 +22,20 @@ const newHtmlTag = (ele) => {
   newElement.addEventListener('click', editNewBlock)
   return newElement
 }
+
+const addNewBlock = (ele) => {
+  const contentDiv = document.querySelector('#added-content')
+  const newBlock = newDiv()
+  const newElement = newHtmlTag(ele)
+  newBlock.appendChild(newElement)
+  contentDiv.appendChild(newBlock);
+  newElement.click()
+}
+
+window.onload = () => {
+  const input = document.querySelector('#block')
+  if (input) {
+    document.querySelector('#block').addEventListener('input', displaySuggestionBlock)
+    document.querySelector('#block').addEventListener('keyup', inputEvents)
+  }
+};
