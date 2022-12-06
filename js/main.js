@@ -14,3 +14,11 @@ const newDiv = () => {
   newBlock.classList = 'text-div'
   return newBlock
 }
+
+const newHtmlTag = (ele) => {
+  const newElement = document.createElement(ele.element)
+  const text = document.createTextNode(ele.defaultValue);
+  newElement.appendChild(text)
+  newElement.addEventListener('click', editNewBlock)
+  return newElement
+}
