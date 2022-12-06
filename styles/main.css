@@ -63,3 +63,53 @@
 .p-0 {
   padding: 0;
 }
+
+header {
+  align-items: center;
+  font-size: 1em;
+  color: #9c9c9c;
+}
+
+#site-map > ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+#site-map > ul > li {
+  margin-left: 0.5em;
+}
+
+#site-map > ul > li:before {
+  content: "/";
+}
+
+#site-map > ul :nth-child(-n+2):before {
+  content: "";
+}
+
+#site-map > ul > li > span {
+  margin-left: 0.5em;
+}
+
+#site-map > ul :nth-child(1) > span {
+  margin-left: 0;
+}
+
+#operations > ul > li {
+  margin-left: 0.5em;
+  display: flex;
+  align-items: center;
+}
+
+#operations > ul > li:before {
+  content: "|";
+}
+
+#operations > ul :nth-child(1):before {
+  content: "";
+}
+
+#operations > ul > li > span {
+  margin-left: 0.5em;
+}
